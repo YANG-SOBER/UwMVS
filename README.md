@@ -4,6 +4,6 @@
 
 <div align="center">
 
-<a href="https://www.youtube.com/watch?v=1N-jPW4yNS8&t=1s" target='_blank'><img src="Video_Title_Page.png" width="70%" /></a>
+<a href="https://www.youtube.com/watch?v=1N-jPW4yNS8&t=1s" target='_blank'><img src="Video_Page.png" width="70%" /></a>
 
 </div>
