@@ -56,13 +56,13 @@ python estimator.py
 
 For synthesizing the training set, run 
 ```
-python synthesizer_train.py
+python synthesize_train.py
 ```
 
 For synthesizing the validation set, run 
 
 ```
-python synthesizer_val.py
+python synthesize_val.py
 ```
 
 For synthesizing the test set, run 
