@@ -13,3 +13,7 @@
 ### ✔  Training and Validation Sets
 
 The training and validation sets are available [here](https://drive.google.com/drive/folders/1WeVMWnPXDBpB948fbhG6xX7O24Mt-gXf?usp=sharing)
+
+### ✔  Test Set
+
+The test set is available [here](https://drive.google.com/drive/folders/1WeVMWnPXDBpB948fbhG6xX7O24Mt-gXf?usp=sharing)
