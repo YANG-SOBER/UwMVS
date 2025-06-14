@@ -8,8 +8,8 @@
 
 </div>
 
-## 📦 Data preparation
+## 📦 Underwater Multi-View Stereo Dataset
 
-### ✔  Training and Validation Sets of the Proposed Underwater Multi-View Stereo Dataset
+### ✔  Training and Validation Sets
 
 The training and validation sets are available [here](https://drive.google.com/drive/folders/1WeVMWnPXDBpB948fbhG6xX7O24Mt-gXf?usp=sharing)
