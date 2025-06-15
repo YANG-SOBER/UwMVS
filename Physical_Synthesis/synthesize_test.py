@@ -150,7 +150,7 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     num_viewpoint = 49
-    light = 7 # DTU dataset has 7 different kinds of light conditions
+    light = 7
     ############################################################################
     with open(os.path.join(args.coef_path, 'UW_Scene_Type.txt')) as f:
         scenes = f.readlines()
