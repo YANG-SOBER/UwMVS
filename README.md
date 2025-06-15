@@ -123,7 +123,7 @@ python ./Physical_Synthesis/synthesize_val.py
 
 For synthesizing the test set, run 
 ```
-python ./synthesize_test.py
+python ./Physical_Synthesis/synthesize_test.py
 ```
 ## :diving_mask: Underwater Multi-View Stereo
 
