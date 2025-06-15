@@ -133,7 +133,7 @@ python ./Physical_Synthesis/synthesize_test.py
 
 * Set ``MVS_TRAINING`` as the path of the UwMVS training set.
 * Set ``LOG_DIR`` to save the checkpoints.
-* Change ``NGPUS`` to suit your device.
+* Change ``NGPUS`` to suit your device. By default, we employ the *DistributedDataParallel* mode to train the model. You can also train the model using a single GPU.
   
 ```bash
 # Path to UwMVS training dataset
