@@ -25,9 +25,9 @@ The underwater multi-view stereo (UwMVS) dataset represents the **first large-sc
 | **UwMVS (Ours)**     | -    | **108,388** | **24,696**    | **4,312**<br>**28,440** | ✓ | ✓ | ✓ |
 
 #### Notes:
-- *: Indicates whether the dataset includes multi-view images
-- †: Specifies if per-view ground-truth metric depth maps are available
-- ‡: Denotes the presence of ground-truth point clouds for each reconstruction scenario
+- *: Indicates whether the dataset includes multi-view images.
+- †: Specifies if per-view ground-truth metric depth maps are available.
+- ‡: Denotes the presence of ground-truth point clouds for each reconstruction scenario.
 
 ### ✔ Statistics of the Proposed UwMVS Dataset
 
@@ -44,11 +44,15 @@ The underwater multi-view stereo (UwMVS) dataset represents the **first large-sc
 #### Notes:
 Our UwMVS dataset includes 79, 18, and 22 underwater reconstruction scenarios for training, validation, and testing, respectively. Each scenario consists of 1,372 images for both training and validation, and 196 images for testing. The dataset covers 4 underwater scene types per scenario and incorporates 7 levels of underwater degradation for training and validation to enhance model robustness. The most severe degradation level is reserved for the test set to evaluate the generalization capability of the learning-based UwMVS. In total, the training, validation, and test sets comprise 108,388, 24,696, and 4,312 underwater multi-view images, respectively.
 
-In addition, we provide 21 real-world underwater video sequences with a total duration of 948 seconds, recorded at 30 frames per second, from which up to 28,440 multi-view images can be extracted for evaluating reconstruction performance in real-world underwater scenes
+In addition, we provide 21 real-world underwater video sequences with a total duration of 948 seconds, recorded at 30 frames per second, from which up to 28,440 multi-view images can be extracted for evaluating reconstruction performance in real-world underwater scenes.
 
-### ✔  Training and Validation Sets
+Our synthesis method generates underwater multi-view images with ground-truth depth maps and point clouds directly obtained from the in-air MVS dataset [DTU](https://roboimagedata.compute.dtu.dk/?page_id=36), thereby eliminating the need for labor-intensive depth annotation and costly underwater laser scanning.
 
-The training and validation sets are available [here](https://drive.google.com/drive/folders/1WeVMWnPXDBpB948fbhG6xX7O24Mt-gXf?usp=sharing).
+*Acknowledgement*: We extend our sincere gratitude to DTU for their foundational dataset and contributions to the research community.
+
+### ✔ UwMVS Training and Validation Sets
+
+The UwMVS training and validation sets are available [here](https://drive.google.com/drive/folders/1WeVMWnPXDBpB948fbhG6xX7O24Mt-gXf?usp=sharing).
 ```
 UwMVS_Training_Validation
  ├── Cameras
@@ -69,9 +73,9 @@ UwMVS_Training_Validation
 - **`Rectified_AIR`**: Holds terrestrial in-air multi-view images.
 - **`Rectified_UW`**: Contains underwater multi-view images across four types of underwater scenes.
 
-### ✔  Test Set
+### ✔ UwMVS Test Set
 
-The test set is available [here](https://drive.google.com/file/d/1qvYtvIKiqpSzLhZGO5mzyJFHsYjWIplC/view?usp=sharing).
+The UwMVS test set is available [here](https://drive.google.com/file/d/1qvYtvIKiqpSzLhZGO5mzyJFHsYjWIplC/view?usp=sharing).
 ```
 UwMVS_Test
  ├── Bluish
@@ -83,9 +87,9 @@ UwMVS_Test
 - **Camera parameters** (intrinsics, extrinsics, and view selection pair file)
 - **Underwater multi-view images** organized by reconstruction scenario
 
-### ✔  Real-World Test Set
+### ✔ UwMVS Real-World Test Set
 
-The real-world test set is available [here](https://drive.google.com/drive/folders/1TeaEg3Uzq6eEj0VZJSfBkJYNYygpFBA0?usp=sharing).
+The UwMVS real-world test set is available [here](https://drive.google.com/drive/folders/1TeaEg3Uzq6eEj0VZJSfBkJYNYygpFBA0?usp=sharing).
 ```
 UwMVS_Real_World
  ├── Images
