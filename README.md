@@ -10,6 +10,42 @@
 
 ## 📦 Underwater Multi-View Stereo Dataset
 
+The underwater multi-view stereo (UwMVS) dataset represents the **first large-scale synthetic dataset** that preserves real-world underwater degradation characteristics, specifically designed for end-to-end training and evaluation of learning-based UwMVS methods.
+
+### ✔ Comparison with Existing Underwater Stereo Datasets
+
+| Datasets             | Year | Training Set | Validation Set | Test Set | Multi-View* | Depth Map† | Point Cloud‡ |
+|----------------------|------|-------------|---------------|----------|------------|-----------|-------------|
+| UWbundle [1]         | 2017 | -           | -             | 36       | ✓          | ✗         | ✓           |
+| UwStereoNet [2]      | 2019 | 4,047       | -             | 15       | ✓          | ✗         | ✗           |
+| DRUVA [3]            | 2023 | 6,000       | -             | 110      | ✓          | ✗         | ✗           |
+| FLSea-Stereo [4]     | 2023 | 7,337       | -             | -        | ✓          | ✗         | ✗           |
+| SeaThru-NeRF [5]     | 2023 | 74          | 14            | -        | ✓          | ✗         | ✗           |
+| UwStereo [6]         | 2024 | 26,611      | -             | 2,957    | ✗          | ✓         | ✗           |
+| **UwMVS (Ours)**     | -    | **108,388** | **24,696**    | **4,312**<br>**28,440** | ✓ | ✓ | ✓ |
+
+#### Notes:
+- *: Indicates whether the dataset includes multi-view images
+- †: Specifies if per-view ground-truth metric depth maps are available
+- ‡: Denotes the presence of ground-truth point clouds for each reconstruction scenario
+
+### ✔ Statistics of the Proposed UwMVS Dataset
+
+| Attributes                          | Training Set | Validation Set | Test Set |
+|-------------------------------------|--------------|----------------|----------|
+| # of Reconstruction Scenarios       | 79           | 18             | 22       |
+| # of Underwater Scene Types         | 4            | 4              | 4        |
+| # of Underwater Degradation Levels  | 7            | 7              | 1        |
+| # of Images in Total                | 108,388      | 24,696         | 4,312    |
+| # of Images for Each Scenario       | 1,372        | 1,372          | 196      |
+| Ground-Truth Depth Map              | ✓            | ✓              | -        |
+| Ground-Truth Point Cloud            | ✓            | ✓              | ✓        |
+
+#### Notes:
+Our UwMVS dataset includes 79, 18, and 22 underwater reconstruction scenarios for training, validation, and testing, respectively. Each scenario consists of 1,372 images for both training and validation, and 196 images for testing. The dataset covers 4 underwater scene types per scenario and incorporates 7 levels of underwater degradation for training and validation to enhance model robustness. The most severe degradation level is reserved for the test set to evaluate the generalization capability of the learning-based UwMVS. In total, the training, validation, and test sets comprise 108,388, 24,696, and 4,312 underwater multi-view images, respectively.
+
+In addition, we provide 21 real-world underwater video sequences with a total duration of 948 seconds, recorded at 30 frames per second, from which up to 28,440 multi-view images can be extracted for evaluating reconstruction performance in real-world underwater scenes
+
 ### ✔  Training and Validation Sets
 
 The training and validation sets are available [here](https://drive.google.com/drive/folders/1WeVMWnPXDBpB948fbhG6xX7O24Mt-gXf?usp=sharing).
@@ -17,6 +53,7 @@ The training and validation sets are available [here](https://drive.google.com/d
 UwMVS_Training_Validation
  ├── Cameras
  ├── Depths_raw
+ ├── MVS_Data
  ├── Rectified_AIR
  └── Rectified_UW
        ├── Bluish
@@ -24,6 +61,13 @@ UwMVS_Training_Validation
        ├── Hazy
        └── Lowlight
 ```
+#### Folder Structure
+
+- **`Cameras`**: Contains camera intrinsics, extrinsics, and a view selection pair file.
+- **`Depth_raw`**: Stores ground-truth depth maps obtained through depth map rendering.
+- **`MVS_Data`**: Includes ground-truth point clouds scanned by a structured-light scanner.
+- **`Rectified_AIR`**: Holds terrestrial in-air multi-view images.
+- **`Rectified_UW`**: Contains underwater multi-view images across four types of underwater scenes.
 
 ### ✔  Test Set
 
@@ -35,6 +79,9 @@ UwMVS_Test
  ├── Hazy
  └── Lowlight
 ```
+#### Each directory contains:
+- **Camera parameters** (intrinsics, extrinsics, and view selection pair file)
+- **Underwater multi-view images** organized by reconstruction scenario
 
 ### ✔  Real-World Test Set
 
@@ -44,6 +91,11 @@ UwMVS_Real_World
  ├── Images
  └── Videos
 ```
+#### Folder Structure
+
+- **`Images`**: Contains real-world underwater multi-view images extracted from videos.
+- **`Videos`**: Stores real-world underwater video sequences.
+- **Note**: Scenarios 1–18 were recorded in the Red Sea, and Scenarios 19–21 near Puerto Galera Island.
 
 ## :ocean: Underwater Multi-View Images Synthesis
 
