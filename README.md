@@ -127,3 +127,40 @@ python ./Physical_Synthesis/synthesize_test.py
 ```
 ## :diving_mask: Underwater Multi-View Stereo
 
+### 📈 Training on UwMVS
+
+#### Modify ``scripts/train.sh``:
+
+* Set ``MVS_TRAINING`` as the path of the UwMVS training set.
+* Set ``LOG_DIR`` to save the checkpoints.
+* Change ``NGPUS`` to suit your device.
+  
+```bash
+# Path to UwMVS training dataset
+MVS_TRAINING="/your/path/to/UwMVS_training_set"
+
+# Checkpoint save directory
+LOG_DIR="/your/path/to/checkpoints"
+
+# Number of GPUs (adjust to your hardware)
+NGPUS=2
+```
+
+#### Configure ``datasets/dtu_yao.py``:
+Specify the underwater scene type (e.g., Greenish) by updating the image path:
+
+```python
+# Example for Greenish water scene:
+img_filename = os.path.join(
+    self.datapath,
+    'Rectified_UW/Greenish/{}/rect_{:0>3}_{}_r5000.png'.format(scan, vid + 1, light_idx)
+)
+
+# Alternative scene types available:
+# - Bluish: 'Rectified_UW/Bluish/{}/rect...'
+# - Hazy: 'Rectified_UW/Hazy/{}/rect...'
+# - Lowlight: 'Rectified_UW/Lowlight/{}/rect...'
+
+
+
+
