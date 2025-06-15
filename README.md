@@ -167,6 +167,20 @@ Execute the following scripts to train the model from scratch:
 bash ./scripts/train.sh
 ```
 
+## References
+
+[1] K. A. Skinner, E. Iscar, and M. Johnson-Roberson, "Automatic color correction for 3D reconstruction of underwater scenes," in *2017 IEEE International Conference on Robotics and Automation (ICRA)*, 2017, pp. 5140-5147.
+
+[2] K. A. Skinner, J. Zhang, E. A. Olson, and M. Johnson-Roberson, "Uwstereonet: Unsupervised learning for depth estimation and color correction of underwater stereo imagery," in *2019 International Conference on Robotics and Automation (ICRA)*, 2019, pp. 7947-7954.
+
+[3] N. Varghese, A. Kumar, and A. Rajagopalan, "Self-supervised monocular underwater depth recovery, image restoration, and a real-sea video dataset," in *Proceedings of the IEEE/CVF International Conference on Computer Vision*, 2023, pp. 12248-12258.
+
+[4] A. Randall and T. Treibitz, "FLSea: Underwater visual-inertial and stereo-vision forward-looking datasets," 2023. [Online]. Available: https://arxiv.org/abs/2302.12772
+
+[5] D. Levy et al., "Seathru-nerf: Neural radiance fields in scattering media," in *Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition*, 2023, pp. 56-65.
+
+[6] Q. Lv et al., "Uwstereo: A large synthetic dataset for underwater stereo matching," 2024. [Online]. Available: https://arxiv.org/abs/2409.01782
+
 
 
 
