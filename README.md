@@ -161,8 +161,8 @@ img_filename = os.path.join(
 # - Hazy: 'Rectified_UW/Hazy/{}/rect...'
 # - Lowlight: 'Rectified_UW/Lowlight/{}/rect...'
 ```
-#### Train the model from scratch
-Run the following scripts:
+#### Run ``./scripts/train.sh``:
+Execute the following scripts to train the model from scratch:
 ```
 bash ./scripts/train.sh
 ```
