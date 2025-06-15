@@ -105,25 +105,25 @@ UwMVS_Real_World
 
 ### ✔ Underwater Degradation Parameters Estimator
 ```
-python estimator.py
+python ./Physical_Synthesis/estimator.py
 ```
 
 ### ✔ Underwater Multi-View Images Synthesizer
 
 For synthesizing the training set, run 
 ```
-python synthesize_train.py
+python ./Physical_Synthesis/synthesize_train.py
 ```
 
 For synthesizing the validation set, run 
 
 ```
-python synthesize_val.py
+python ./Physical_Synthesis/synthesize_val.py
 ```
 
 For synthesizing the test set, run 
 ```
-python synthesize_test.py
+python ./synthesize_test.py
 ```
 ## :diving_mask: Underwater Multi-View Stereo
 
