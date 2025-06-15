@@ -45,7 +45,7 @@ UwMVS_Real_World
  └── Videos
 ```
 
-## 🚂 Underwater Multi-View Images Synthesis
+## :ocean: Underwater Multi-View Images Synthesis
 
 ### ✔ Underwater Degradation Parameters Estimator
 ```
@@ -69,4 +69,5 @@ For synthesizing the test set, run
 ```
 python synthesize_test.py
 ```
+## :diving_mask: Underwater Multi-View Stereo
 
