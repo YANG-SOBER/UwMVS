@@ -238,6 +238,32 @@ Run the following script to obtain depth estimates and point cloud reconstructio
 
 `bash ./scripts/test.sh`
 
+#### Reconstruction Performance Evaluation 
+
+First, move all the reconstructed point cloud files into a new folder named `points`.
+
+Then, rename each point cloud file using the format: **mvsnet###_l3.ply**, where `###` is the zero-padded, three-digit ID corresponding to the reconstruction scenario. For example, the point cloud for `scan1` should be renamed to: **mvsnet001_l3.ply**, where `l3` indicates the most severe underwater degradation level assigned to the UwMVS test set.
+
+After organizing the reconstructed point clouds, update the following MATLAB scripts:
+
+- `./UwMVS_Evaluation/BaseEvalMain_web.m`
+- `./UwMVS_Evaluation/ComputeStat_web.m`
+
+Modify the following variables in both scripts:
+
+- **`datapath`**: Set this to the `MVS_Data` folder, which contains the ground-truth point clouds used for quantitative evaluation.
+- **`plyPath`**: Set this to the `points` folder where your reconstructed point clouds are stored.
+- **`resultsPath`**: Set this to a new folder named `eval`, which should be created to store the evaluation outputs.
+
+> 📌 Make sure the `eval` folder exists before running the scripts to avoid errors during evaluation.
+
+Finally, run `./UwMVS_Evaluation/BaseEvalMain_web.m` in MATLAB to evaluate the reconstruction accuracy and completeness for each scenario. Then, execute `./UwMVS_Evaluation/ComputeStat_web.m` to compute the mean accuracy and mean completeness across all reconstruction scenarios. The overall score is calculated as the arithmetic mean of the mean accuracy and mean completeness.
+
+
+
+
+
+
 ## <span style="color:red">❤️</span> Acknowledgements
 
 We gratefully acknowledge the foundational advances that made this research possible: [Sea-Thru](https://openaccess.thecvf.com/content_CVPR_2019/html/Akkaynak_Sea-Thru_A_Method_for_Removing_Water_From_Underwater_Images_CVPR_2019_paper.html) and the [Revised Underwater Image Formation Model](https://openaccess.thecvf.com/content_cvpr_2018/html/Akkaynak_A_Revised_Underwater_CVPR_2018_paper.html) revolutionized underwater imaging; the pioneering [DTU](https://roboimagedata.compute.dtu.dk/?page_id=36) dataset established essential MVS benchmarks; the MVSNet series ([MVSNet](https://arxiv.org/pdf/1804.02505), [CasMVSNet](https://openaccess.thecvf.com/content_CVPR_2020/html/Gu_Cascade_Cost_Volume_for_High-Resolution_Multi-View_Stereo_and_Stereo_Matching_CVPR_2020_paper.html), [GC-MVSNet](https://openaccess.thecvf.com/content/WACV2024/html/Vats_GC-MVSNet_Multi-View_Multi-Scale_Geometrically-Consistent_Multi-View_Stereo_WACV_2024_paper.html), [GoMVS](https://openaccess.thecvf.com/content/CVPR2024/html/Wu_GoMVS_Geometrically_Consistent_Cost_Aggregation_for_Multi-View_Stereo_CVPR_2024_paper.html), [RC-MVSNet](https://openaccess.thecvf.com/content/CVPR2023/html/Zhang_Multi-View_Stereo_Representation_Revist_Region-Aware_MVSNet_CVPR_2023_paper.html), [UniMVSNet](https://arxiv.org/abs/2201.01501), [TransMVSNet](https://openaccess.thecvf.com/content/CVPR2022/html/Ding_TransMVSNet_Global_Context-Aware_Multi-View_Stereo_Network_With_Transformers_CVPR_2022_paper.html), [GeoMVSNet](https://openaccess.thecvf.com/content/CVPR2023/html/Zhang_GeoMVSNet_Learning_Multi-View_Stereo_With_Geometry_Perception_CVPR_2023_paper.html),) progressively advanced learning-based terrestrial depth estimation; while [ZoeDepth](https://openaccess.thecvf.com/content/ICCV2023/html/Guizilini_Towards_Zero-Shot_Scale-Aware_Monocular_Depth_Estimation_ICCV_2023_paper.html), [OmniData](https://openaccess.thecvf.com/content/ICCV2021/html/Eftekhar_Omnidata_A_Scalable_Pipeline_for_Making_Multi-Task_Mid-Level_Vision_Datasets_ICCV_2021_paper.html), and [Metric3D](https://openaccess.thecvf.com/content/ICCV2023/html/Yin_Metric3D_Towards_Zero-shot_Metric_3D_Prediction_from_A_Single_Image_ICCV_2023_paper.html) advanced depth and surface normal estimation. These collective breakthroughs created the technical bedrock for our underwater multi-view stereo framework.
