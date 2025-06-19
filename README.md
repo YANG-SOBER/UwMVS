@@ -22,7 +22,7 @@ The underwater multi-view stereo (UwMVS) dataset represents the **first large-sc
 | FLSea-Stereo [4]     | 2023 | 7,337       | -             | -        | ✓          | ✗         | ✗           |
 | SeaThru-NeRF [5]     | 2023 | 74          | 14            | -        | ✓          | ✗         | ✗           |
 | UwStereo [6]         | 2024 | 26,611      | -             | 2,957    | ✗          | ✓         | ✗           |
-| **UwMVS (Ours)**     | -    | **108,388** | **24,696**    | **4,312**<br>**28,440** | ✓ | ✓ | ✓ |
+| **UwMVS (Ours)**     | 2024    | **108,388** | **24,696**    | **4,312**<br>**28,440** | ✓ | ✓ | ✓ |
 
 #### Notes:
 - *: Indicates whether the dataset includes multi-view images.
