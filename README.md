@@ -105,25 +105,86 @@ UwMVS_Real_World
 
 ### ✔ Underwater Degradation Parameters Estimator
 ```
-python estimator.py
+python ./Physical_Synthesis/estimator.py
 ```
 
 ### ✔ Underwater Multi-View Images Synthesizer
 
 For synthesizing the training set, run 
 ```
-python synthesize_train.py
+python ./Physical_Synthesis/synthesize_train.py
 ```
 
 For synthesizing the validation set, run 
 
 ```
-python synthesize_val.py
+python ./Physical_Synthesis/synthesize_val.py
 ```
 
 For synthesizing the test set, run 
 ```
-python synthesize_test.py
+python ./Physical_Synthesis/synthesize_test.py
 ```
 ## :diving_mask: Underwater Multi-View Stereo
+
+### 📈 Training on UwMVS
+
+#### Modify ``scripts/train.sh``:
+
+* Set ``MVS_TRAINING`` as the path of the UwMVS training set.
+* Set ``LOG_DIR`` to save the checkpoints.
+* Change ``NGPUS`` to suit your device. By default, we employ the *DistributedDataParallel* mode to train the model. You can also train the model using a single GPU.
+  
+```bash
+# Path to UwMVS training dataset
+MVS_TRAINING="/your/path/to/UwMVS_training_set"
+
+# Checkpoint save directory
+LOG_DIR="/your/path/to/checkpoints"
+
+# Number of GPUs (adjust to your hardware)
+NGPUS=2
+```
+
+#### Configure ``datasets/dtu_yao.py``:
+Specify the underwater scene type (e.g., Greenish) by updating the image path:
+
+```python
+# Example for Greenish water scene:
+img_filename = os.path.join(
+    self.datapath,
+    'Rectified_UW/Greenish/{}/rect_{:0>3}_{}_r5000.png'.format(scan, vid + 1, light_idx)
+)
+
+# Alternative scene types available:
+# - Bluish: 'Rectified_UW/Bluish/{}/rect...'
+# - Hazy: 'Rectified_UW/Hazy/{}/rect...'
+# - Lowlight: 'Rectified_UW/Lowlight/{}/rect...'
+```
+#### Run ``./scripts/train.sh``:
+Execute the following scripts to train the model from scratch:
+```
+bash ./scripts/train.sh
+```
+
+## <span style="color:red">❤️</span> Acknowledgements
+
+We gratefully acknowledge the foundational advances that made this research possible: [Sea-Thru](https://openaccess.thecvf.com/content_CVPR_2019/html/Akkaynak_Sea-Thru_A_Method_for_Removing_Water_From_Underwater_Images_CVPR_2019_paper.html) and the [Revised Underwater Image Formation Model](https://openaccess.thecvf.com/content_cvpr_2018/html/Akkaynak_A_Revised_Underwater_CVPR_2018_paper.html) revolutionized underwater imaging; the pioneering [DTU](https://roboimagedata.compute.dtu.dk/?page_id=36) dataset established essential MVS benchmarks; the MVSNet series ([MVSNet](https://arxiv.org/pdf/1804.02505), [CasMVSNet](https://openaccess.thecvf.com/content_CVPR_2020/html/Gu_Cascade_Cost_Volume_for_High-Resolution_Multi-View_Stereo_and_Stereo_Matching_CVPR_2020_paper.html), [GC-MVSNet](https://openaccess.thecvf.com/content/WACV2024/html/Vats_GC-MVSNet_Multi-View_Multi-Scale_Geometrically-Consistent_Multi-View_Stereo_WACV_2024_paper.html), [GoMVS](https://openaccess.thecvf.com/content/CVPR2024/html/Wu_GoMVS_Geometrically_Consistent_Cost_Aggregation_for_Multi-View_Stereo_CVPR_2024_paper.html), [RC-MVSNet](https://openaccess.thecvf.com/content/CVPR2023/html/Zhang_Multi-View_Stereo_Representation_Revist_Region-Aware_MVSNet_CVPR_2023_paper.html), [UniMVSNet](https://arxiv.org/abs/2201.01501), [TransMVSNet](https://openaccess.thecvf.com/content/CVPR2022/html/Ding_TransMVSNet_Global_Context-Aware_Multi-View_Stereo_Network_With_Transformers_CVPR_2022_paper.html), [GeoMVSNet](https://openaccess.thecvf.com/content/CVPR2023/html/Zhang_GeoMVSNet_Learning_Multi-View_Stereo_With_Geometry_Perception_CVPR_2023_paper.html),) progressively advanced learning-based terrestrial depth estimation; while [ZoeDepth](https://openaccess.thecvf.com/content/ICCV2023/html/Guizilini_Towards_Zero-Shot_Scale-Aware_Monocular_Depth_Estimation_ICCV_2023_paper.html), [OmniData](https://openaccess.thecvf.com/content/ICCV2021/html/Eftekhar_Omnidata_A_Scalable_Pipeline_for_Making_Multi-Task_Mid-Level_Vision_Datasets_ICCV_2021_paper.html), and [Metric3D](https://openaccess.thecvf.com/content/ICCV2023/html/Yin_Metric3D_Towards_Zero-shot_Metric_3D_Prediction_from_A_Single_Image_ICCV_2023_paper.html) advanced depth and surface normal estimation. These collective breakthroughs created the technical bedrock for our underwater multi-view stereo framework.
+
+## References
+
+[1] K. A. Skinner, E. Iscar, and M. Johnson-Roberson, "Automatic color correction for 3D reconstruction of underwater scenes," in *2017 IEEE International Conference on Robotics and Automation (ICRA)*, 2017, pp. 5140-5147.
+
+[2] K. A. Skinner, J. Zhang, E. A. Olson, and M. Johnson-Roberson, "Uwstereonet: Unsupervised learning for depth estimation and color correction of underwater stereo imagery," in *2019 International Conference on Robotics and Automation (ICRA)*, 2019, pp. 7947-7954.
+
+[3] N. Varghese, A. Kumar, and A. Rajagopalan, "Self-supervised monocular underwater depth recovery, image restoration, and a real-sea video dataset," in *Proceedings of the IEEE/CVF International Conference on Computer Vision*, 2023, pp. 12248-12258.
+
+[4] A. Randall and T. Treibitz, "FLSea: Underwater visual-inertial and stereo-vision forward-looking datasets," 2023. [Online]. Available: https://arxiv.org/abs/2302.12772
+
+[5] D. Levy et al., "Seathru-nerf: Neural radiance fields in scattering media," in *Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition*, 2023, pp. 56-65.
+
+[6] Q. Lv et al., "Uwstereo: A large synthetic dataset for underwater stereo matching," 2024. [Online]. Available: https://arxiv.org/abs/2409.01782
+
+
+
 
