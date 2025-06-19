@@ -234,11 +234,9 @@ Configure the appropriate paths in `scripts/test_dtu.sh`:
 * Set `CKPT_FILE` to the path of the pretrained model weights.
 * Set `FUSIBLE_PATH` to the location of the compiled fusibile executable.
 
+Run the following script to obtain depth estimates and point cloud reconstruction:
 
-
-
-
-
+`bash ./scripts/test.sh`
 
 ## <span style="color:red">❤️</span> Acknowledgements
 
