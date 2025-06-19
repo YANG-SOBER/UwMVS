@@ -262,7 +262,7 @@ Finally, run `./UwMVS_Evaluation/BaseEvalMain_web.m` in MATLAB to evaluate the r
 
 #### In-the-Wild Testing
 
-Learning-based UwMVS methods require camera parameters and a view selection pair file. For real-world underwater multi-view images, use [Colmap](https://colmap.github.io/) to estimate the camera parameters. The output directory should be structured as follows:
+Learning-based UwMVS methods require camera parameters and a view selection pair file. For real-world underwater multi-view images, use [COLMAP](https://colmap.github.io/) to estimate the camera parameters. The output directory should be structured as follows:
 
 ```
 Scene_Name
