@@ -112,28 +112,58 @@ UwMVS_Real_World
 Our two-stage physically-guided underwater multi-view images synthesis approach consists of: a) Underwater Degradation Parameters Estimator: Takes a real-world underwater image as input and estimates backscatter coefficients $\mathbf{S}$, attenuation coefficients $\mathbf{A}$, and global white point $W$. b) Underwater Multi-View Images Synthesizer: Processes real-world in-air multi-view images as input and generates underwater multi-view images by performing the white balance, direct attenuation, and backscatter addition with the estimated $W$, $\mathbf{A}$, $\mathbf{S}$ sequentially. Note that the camera-object depth map are estimated via the monocular depth estimation network [ZoeDepth](https://github.com/isl-org/ZoeDepth).
 
 ### ✔ Underwater Degradation Parameters Estimator
+
+First, run the following script to generate the depth map for the real-world underwater image.
+
+```
+python estimate_mono_depth_real.py
+```
+
+Then, run the following script to estimate underwater degradation parameters:
+
 ```
 python ./Physical_Synthesis/estimator.py
 ```
 
+
 ### ✔ Underwater Multi-View Images Synthesizer
 
-For synthesizing the training set, first run 
+Afterward, run the following scripts to synthesize the UwMVS training, validation, and test sets, respectively.
+
+Synthesizing the training set: 
 
 ```
 python ./Physical_Synthesis/synthesize_train.py
 ```
 
-For synthesizing the validation set, run 
+Synthesizing the validation set: 
 
 ```
 python ./Physical_Synthesis/synthesize_val.py
 ```
 
-For synthesizing the test set, run 
+Synthesizing the test set:
+
 ```
 python ./Physical_Synthesis/synthesize_test.py
 ```
+Note that the synthesis process requires a per-view depth map; you can either use the ground-truth depth map from the ``Depths_raw`` or estimate the depth map. Since the ground-truth depth map is not always complete, we directly estimate the depth map via the following scripts to produce a smoother depth map:
+
+
+For the training (train.txt) and validation (val.txt) sets:
+
+```
+python ./Physical_Synthesis/estimate_mono_depth_train.py
+```
+
+For the test set:
+
+```
+python ./Physical_Synthesis/estimate_mono_depth_test.py
+```
+
+
+
 ## :diving_mask: Underwater Multi-View Stereo
 
 ### 📈 Training on UwMVS
