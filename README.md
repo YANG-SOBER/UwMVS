@@ -125,7 +125,6 @@ Then, run the following script to estimate underwater degradation parameters:
 python ./Physical_Synthesis/estimator.py
 ```
 
-
 ### ✔ Underwater Multi-View Images Synthesizer
 
 Afterward, run the following scripts to synthesize the UwMVS training, validation, and test sets, respectively.
@@ -161,8 +160,6 @@ For the test set:
 ```
 python ./Physical_Synthesis/estimate_mono_depth_test.py
 ```
-
-
 
 ## :diving_mask: Underwater Multi-View Stereo
 
@@ -205,6 +202,43 @@ Execute the following scripts to train the model from scratch:
 ```
 bash ./scripts/train.sh
 ```
+### 📊 Testing on UwMVS
+
+#### Compile Point Cloud Fusion Method
+
+Following standard practice in terrestrial MVS, learning-based UwMVS methods typically involve two stages: (1) learning-based multi-view depth estimation, and (2) multi-view depth filtering and fusion. Trained UwMVS models are used to estimate depth from multiple views, while the [Gipuma](https://prs.igp.ethz.ch/content/dam/ethz/special-interest/baug/igp/photogrammetry-remote-sensing-dam/documents/pdf/galliani-lasinger-iccv15.pdf) method is employed to filter and fuse the resulting depth maps into a reconstructed point cloud.
+
+First, clone the [fusibile](https://github.com/YoYo000/fusibile) repository, which provides the code implementation of the Gipuma method.
+
+Next, configure the virtual architecture (arch) and machine code (code) settings in the `CMakeLists.txt` to match your GPU. For example, for an NVIDIA RTX 3090 Ti (Compute Capability 8.6), modify the following line to set the CUDA NVCC compilation flags:
+
+```
+set(CUDA_NVCC_FLAGS ${CUDA_NVCC_FLAGS};-O3 --use_fast_math --ptxas-options=-v -std=c++11 --compiler-options -Wall -gencode arch=compute_86,code=sm_86)
+```
+This ensures that the CUDA compiler generates optimized code specifically for your GPU architecture.
+
+Finally, compile the code to generate the `fusibile` executable:
+
+```
+cd <your fusibile path>
+cmake .
+make
+```
+
+#### Depth Estimation and Point Cloud Fusion
+
+Configure the appropriate paths in `scripts/test_dtu.sh`:
+
+* Set `TESTPATH` to the directory containing the UwMVS test dataset.
+* Set `TESTLIST` to the file specifying the test image list.
+* Set `CKPT_FILE` to the path of the pretrained model weights.
+* Set `FUSIBLE_PATH` to the location of the compiled fusibile executable.
+
+
+
+
+
+
 
 ## <span style="color:red">❤️</span> Acknowledgements
 
