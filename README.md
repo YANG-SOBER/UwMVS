@@ -259,10 +259,36 @@ Modify the following variables in both scripts:
 
 Finally, run `./UwMVS_Evaluation/BaseEvalMain_web.m` in MATLAB to evaluate the reconstruction accuracy and completeness for each scenario. Then, execute `./UwMVS_Evaluation/ComputeStat_web.m` to compute the mean accuracy and mean completeness across all reconstruction scenarios. The overall score is calculated as the arithmetic mean of the mean accuracy and mean completeness.
 
+#### In-the-Wild Testing
 
+Learning-based UwMVS methods require camera parameters and a view selection pair file. For real-world underwater multi-view images, use [Colmap](https://colmap.github.io/) to estimate the camera parameters. The output directory should be structured as follows:
 
+```
+Scene_Name
+ ├── images
+ └── sparse
+       ├── cameras.bin
+       ├── images.bin
+       └── points3D.bin
+```
+For detailed explanations of the cameras.bin, images.bin, and points3D.bin files, refer to the [COLMAP data format documentation](https://colmap.github.io/format.html).
 
+Then, run `colmap2mvsnet.py` to convert the COLMAP output to the MVSNet-compatible input format:
 
+```
+python colmap2mvsnet.py --dense_folder <Your Scene_Name Path> --max_d 256 --convert_format 
+```
+
+After conversion, the directory structure will look like this:
+
+```
+Scene_Name
+ ├── cams
+ ├── images
+ ├── sparse
+ └── pair.txt
+```
+Finally, refer to the `Testing on UwMVS` section to estimate depth maps and perform point cloud reconstruction.
 
 ## <span style="color:red">❤️</span> Acknowledgements
 
