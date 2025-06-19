@@ -103,7 +103,13 @@ UwMVS_Real_World
 
 ## :ocean: Underwater Multi-View Images Synthesis
 
+<div align="center">
 
+<img src="assets/PUIS.png" width="50%" />
+
+</div>
+
+Our two-stage physically-guided underwater multi-view images synthesis approach consists of: a) Underwater Degradation Parameters Estimator: Takes a real-world underwater image as input and estimates backscatter coefficients $\mathbf{S}$, attenuation coefficients $\mathbf{A}$, and global white point $W$. b) Underwater Multi-View Images Synthesizer: Processes real-world in-air multi-view images as input and generates underwater multi-view images by performing the white balance, direct attenuation, and backscatter addition with the estimated $W$, $\mathbf{A}$, $\mathbf{S}$ sequentially. Note that the camera-object depth map are estimated via the monocular depth estimation network [ZoeDepth](https://github.com/isl-org/ZoeDepth).
 
 ### ✔ Underwater Degradation Parameters Estimator
 ```
@@ -112,7 +118,8 @@ python ./Physical_Synthesis/estimator.py
 
 ### ✔ Underwater Multi-View Images Synthesizer
 
-For synthesizing the training set, run 
+For synthesizing the training set, first run 
+
 ```
 python ./Physical_Synthesis/synthesize_train.py
 ```
