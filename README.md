@@ -233,6 +233,7 @@ Configure the appropriate paths in `scripts/test_dtu.sh`:
 * Set `TESTLIST` to the file specifying the test image list.
 * Set `CKPT_FILE` to the path of the pretrained model weights.
 * Set `FUSIBLE_PATH` to the location of the compiled fusibile executable.
+* Set `OUTDIR` to store the depth estimates and reconstructed point clouds. 
 
 Run the following script to obtain depth estimates and point cloud reconstruction:
 
