@@ -101,6 +101,21 @@ UwMVS_Real_World
 - **`Videos`**: Stores real-world underwater video sequences.
 - **Note**: Scenarios 1–18 were recorded in the Red Sea, and Scenarios 19–21 near Puerto Galera Island.
 
+### ✔ Multi-Task Potential of the UwMVS Dataset
+
+The proposed UwMVS dataset can be applied to a wide range of underwater vision tasks, including but not limited to:
+
+* Underwater multi-view stereo
+* Underwater image enhancement
+* Underwater novel view synthesis
+* Underwater video interpolation and extrapolation
+* Underwater surface normal estimation
+* Underwater mesh reconstruction
+
+> 📌 For underwater surface normal estimation and mesh reconstruction tasks, ground-truth surface normals can be estimated using least squares plane fitting, followed by bilateral filtering to reduce noise while preserving edges. This direction will be explored in future work.
+  
+
+
 ## :ocean: Underwater Multi-View Images Synthesis
 
 <div align="center">
@@ -169,7 +184,8 @@ python ./Physical_Synthesis/estimate_mono_depth_test.py
 
 * Set ``MVS_TRAINING`` as the path of the UwMVS training set.
 * Set ``LOG_DIR`` to save the checkpoints.
-* Change ``NGPUS`` to suit your device. By default, we employ the *DistributedDataParallel* mode to train the model. You can also train the model using a single GPU.
+* Change ``NGPUS`` to suit your device.
+* By default, we employ the *DistributedDataParallel* mode to train the model. You can also train the model using a single GPU.
   
 ```bash
 # Path to UwMVS training dataset
@@ -229,9 +245,9 @@ make
 
 Configure the appropriate paths in `scripts/test_dtu.sh`:
 
-* Set `TESTPATH` to the directory containing the UwMVS test dataset.
-* Set `TESTLIST` to the file specifying the test image list.
-* Set `CKPT_FILE` to the path of the pretrained model weights.
+* Set `TESTPATH` to the directory containing the UwMVS test set.
+* Set `TESTLIST` to the file specifying the test list.
+* Set `CKPT_FILE` to the path of the trained model weights.
 * Set `FUSIBLE_PATH` to the location of the compiled fusibile executable.
 * Set `OUTDIR` to store the depth estimates and reconstructed point clouds. 
 
@@ -243,7 +259,7 @@ Run the following script to obtain depth estimates and point cloud reconstructio
 
 First, move all the reconstructed point cloud files into a new folder named `points`.
 
-Then, rename each point cloud file using the format: **mvsnet###_l3.ply**, where `###` is the zero-padded, three-digit ID corresponding to the reconstruction scenario. For example, the point cloud for `scan1` should be renamed to: **mvsnet001_l3.ply**, where `l3` indicates the most severe underwater degradation level assigned to the UwMVS test set.
+Then, rename each point cloud file using the format: **mvsnet###_l3.ply**, where `###` is the zero-padded, three-digit ID corresponding to the reconstruction scenario in the UwMVS test set. For example, the point cloud for `scan1` should be renamed to: **mvsnet001_l3.ply**, where `l3` indicates the most severe underwater degradation level assigned to the UwMVS test set.
 
 After organizing the reconstructed point clouds, update the following MATLAB scripts:
 
