@@ -171,7 +171,7 @@ if __name__ == '__main__':
                     output_dir = os.path.join(args.output_dir, scene, scan)
                     os.makedirs(output_dir, exist_ok=True)
 
-                    coef = coefs[4]
+                    coef = coefs[3]
                     for vid in range(num_viewpoint):
                         img_filename = os.path.join(args.image_dir, '{}/images/{:0>8}.jpg'.format(scan, vid))
                         depth_filename = os.path.join(args.depth_dir, '{}/{:0>8}.pfm'.format(scan, vid))
