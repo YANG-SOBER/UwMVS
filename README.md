@@ -10,7 +10,7 @@
 
 ## 📦 Underwater Multi-View Stereo Dataset
 
-The underwater multi-view stereo (UwMVS) dataset represents the **first large-scale synthetic dataset** that preserves real-world underwater degradation characteristics, specifically designed for **end-to-end training and evaluation of learning-based UwMVS methods**.
+The **underwater multi-view stereo (UwMVS) dataset** represents the **first large-scale synthetic dataset** that preserves real-world underwater degradation characteristics, specifically designed for **end-to-end training and evaluation of learning-based UwMVS methods**.
 
 ### ✔ Comparison with Existing Underwater Stereo Datasets
 
