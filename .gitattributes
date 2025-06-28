@@ -1,2 +1,0 @@
-UwMVS_Networks/GeoMVSNet/ckpts/**/model_24.ckpt filter=lfs diff=lfs merge=lfs -text
-UwMVS_Networks/GeoMVSNet/ckpts/**/*.ckpt filter=lfs diff=lfs merge=lfs -text
